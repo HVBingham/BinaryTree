@@ -9,9 +9,14 @@ namespace BinarySearchTree
     public class BinaryTree
     {
         public Node root;
+        public Levels level;
+
         public BinaryTree()
         {
             root = null;
+            level = new Levels();
+            
+     
         }
         public void Add(int value)
         {
@@ -23,34 +28,69 @@ namespace BinarySearchTree
             }
             AddEdge(root, new Node(value));
         }
-        public void AddEdge(Node root, Node tempNode)
+        public void AddEdge(Node node, Node tempNode)
         {
-            if (root == null)
+          
+            if (node == null)
             {
-                root = tempNode;
+                node = tempNode;
             }
-            if (tempNode.value < root.value)
+            if (tempNode.value < node.value)
             {
-                if (root.left == null)
+                if (node.left == null)
                 {
-                    root.left = tempNode;
+                    tempNode=node.left;
+                  
+                 
                 }
                 else
                 {
-                    AddEdge(root.left, tempNode);
+                    
+                    AddEdge(node.left, tempNode);
                 }
             }
-            if (tempNode.value > root.value)
+            else
             {
-                if (root.right == null)
+                if (node.right == null)
                 {
-                    root.right = tempNode;
+                    tempNode=node.right;
+
+                    
+                    
                 }
                 else
                 {
-                    AddEdge(root.right, tempNode);
+                    AddEdge(node.right, tempNode);
                 }
             }
+        }
+       public void AddLevel()
+       {
+
+       }
+       
+      public Node Search(int value)
+        {
+            Node tempNode = root;
+            while (tempNode != null)
+            {
+                if (tempNode.value == value)
+                {
+                    return tempNode;
+                }
+                else if (value <= tempNode.value)
+                {
+                    tempNode = tempNode.left;
+                    Console.WriteLine("left " +value +"");
+                }
+                else
+                {
+                    tempNode = tempNode.right;
+                    Console.WriteLine("Right " +value +"");
+                }
+            }
+            return null;
+            
         }
     }
    
