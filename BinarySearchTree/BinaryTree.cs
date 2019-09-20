@@ -40,12 +40,9 @@ namespace BinarySearchTree
                 if (node.left == null)
                 {
                     tempNode=node.left;
-                  
-                 
                 }
                 else
-                {
-                    
+                {  
                     AddEdge(node.left, tempNode);
                 }
             }
@@ -55,8 +52,6 @@ namespace BinarySearchTree
                 {
                     tempNode=node.right;
 
-                    
-                    
                 }
                 else
                 {
@@ -64,10 +59,7 @@ namespace BinarySearchTree
                 }
             }
         }
-       public void AddLevel()
-       {
-
-       }
+       
        
       public Node Search(int value)
         {
